@@ -2,9 +2,20 @@ const express = require('express')
 const app = express()
 const contenedor = require('./contenedor')
 
+app.get('/', (req, res) => {
+   res.send(`
+   <div>
+      <h3/><a href="/productos">ir a productos</a></h3>
+    </div>
+    <div>
+      <h3/><a href="/productosRandom">ir a productos Random</a></h3>
+    </div>
+    `)
+})
+
 app.get('/productos', (req, res) => {
    contenedor.getAll()
-      .then(console.log)
+      .then(data => res.send(`<pre>${JSON.stringify(data)}</pre>`))
 })
 
 app.get('/productosRandom', async (req, res) => {
@@ -13,8 +24,7 @@ app.get('/productosRandom', async (req, res) => {
 
    const randomProd = await contenedor.getById(random)
 
-   console.log(randomProd)
-   res.send(`<h1>${random}</h1>`)
+   res.send(`<pre>${JSON.stringify(randomProd)}</pre>`)
 })
 
 app.listen(8080, () => {
