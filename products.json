@@ -1,20 +1,20 @@
 [
-   {
-      "id": 1,
-      "title": "airPods",
-      "price": 100,
-      "thumbnail": "http://thumbnail.com/celular"
-   },
-   {
-      "id": 2,
-      "title": "tablet",
-      "price": 399,
-      "thumbnail": "http://thumbnail.com/tablet"
-   },
-   {
-      "id": 3,
-      "title": "iphone",
-      "price": 450,
-      "thumbnail": "http://thumbnail.com/iphone"
-   }
+  {
+    "id": 1,
+    "title": "airPods",
+    "price": 100,
+    "thumbnail": "http://thumbnail.com/celular"
+  },
+  {
+    "id": 2,
+    "title": "tablet",
+    "price": 399,
+    "thumbnail": "http://thumbnail.com/tablet"
+  },
+  {
+    "id": 3,
+    "title": "iphone",
+    "price": 450,
+    "thumbnail": "http://thumbnail.com/iphone"
+  }
 ]

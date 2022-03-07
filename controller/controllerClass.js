@@ -1,6 +1,6 @@
 const fs = require('fs')
 
-class Contenedor {
+class Controller {
    constructor(fileName) {
       this.fileName = fileName
    }
@@ -27,7 +27,7 @@ class Contenedor {
       const file = JSON.parse(await fs.promises.readFile(this.fileName))
       const fileById = await file.find(f => f.id === id)
 
-      if (typeof fileById === 'undefined') return { Error: 'no se encontro nada' }
+      if (typeof fileById === 'undefined') return { Error: 'producto no encontrado' }
 
       return fileById
    }
@@ -58,5 +58,5 @@ class Contenedor {
 }
 
 
-module.exports = new Contenedor('products.json')
+module.exports = new Controller('products.json')
 

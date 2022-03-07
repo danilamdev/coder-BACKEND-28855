@@ -1,31 +1,17 @@
 const express = require('express')
+const productRoutes = require('./routes/productRoutes')
 const app = express()
-const contenedor = require('./contenedor')
+
+app.use(express.json())
+app.use(express.static('public'))
+app.use(express.urlencoded({ extended: true }))
+app.use('/api/productos', productRoutes)
+
 
 app.get('/', (req, res) => {
-   res.send(`
-   <div>
-      <h3/><a href="/productos">ir a productos</a></h3>
-    </div>
-    <div>
-      <h3/><a href="/productosRandom">ir a productos Random</a></h3>
-    </div>
-    `)
+   res.sendFile('index')
 })
 
-app.get('/productos', (req, res) => {
-   contenedor.getAll()
-      .then(data => res.send(`<pre>${JSON.stringify(data)}</pre>`))
-})
-
-app.get('/productosRandom', async (req, res) => {
-   const products = await contenedor.getAll()
-   const random = Math.floor(Math.random() * products.length + 1)
-
-   const randomProd = await contenedor.getById(random)
-
-   res.send(`<pre>${JSON.stringify(randomProd)}</pre>`)
-})
 
 app.listen(8080, () => {
    console.log('app listen on port 8080')
