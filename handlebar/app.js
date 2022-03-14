@@ -18,18 +18,18 @@ app.get('/', async (req, res) => {
 
 app.get('/productos', async (req, res) => {
    const products = await controller.getAll()
-   console.log('app.get')
    res.render('table', { products })
 })
 
 app.post('/productos', async (req, res) => {
-   const nuevoProducto = req.body
+   const producto = req.body
+   const priceNumber = Number(producto.price)
+   const nuevoProducto = { ...producto, price: priceNumer }
+
    await controller.save(nuevoProducto)
-   const allProducts = await controller.getAll()
-   console.log(allProducts)
    res.redirect('/productos')
 })
 
 app.listen('8080', () => {
-   console.log('servidor iniciado en PUERTO 3000')
+   console.log('servidor iniciado en PUERTO 8080')
 })
