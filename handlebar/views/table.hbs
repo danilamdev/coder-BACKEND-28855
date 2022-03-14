@@ -1,0 +1,22 @@
+<div class="container">
+   {{>header}}
+
+   <table class="content-table">
+      <thead>
+         <tr class="head-tr">
+            <th>Producto</th>
+            <th>Precio</th>
+            <th>URL de imagen</th>
+         </tr>
+      </thead>
+      <tbody class="table-body">
+         {{#each products}}
+         <tr>
+            <td>{{title}}</td>
+            <td>${{price}}</td>
+            <td><img src={{thumbnail}} alt="hola" width="54" height="54"></td>
+         </tr>
+         {{/each}}
+      </tbody>
+   </table>
+</div>

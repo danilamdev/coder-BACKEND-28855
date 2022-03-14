@@ -1,0 +1,24 @@
+<div class="container">
+   {{>header}}
+
+   <h2>formulario</h2>
+
+   <div class="form-container">
+      <form action="/productos" method="POST">
+         <label for="producto">
+            <input type="text" name="title" id="producto" placeholder="producto...">
+         </label>
+
+         <label for="precio">
+            <input type="text" name="price" id="precio" placeholder="precio...">
+         </label>
+
+         <label for="url">
+            <input type="text" name="thumbnail" id="url" placeholder="url...">
+         </label>
+
+         <button class="btn">Enviar</button>
+      </form>
+   </div>
+
+</div>

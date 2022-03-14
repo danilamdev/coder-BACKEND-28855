@@ -1,20 +1,20 @@
 [
   {
     "id": 1,
-    "title": "airPods",
+    "title": "calculadora",
     "price": 100,
-    "thumbnail": "http://thumbnail.com/celular"
+    "thumbnail": "https://cdn1.iconfinder.com/data/icons/icons-for-a-site-1/64/advantage_calculator-256.png"
   },
   {
     "id": 2,
-    "title": "tablet",
+    "title": "reloj",
     "price": 399,
-    "thumbnail": "http://thumbnail.com/tablet"
+    "thumbnail": "https://cdn2.iconfinder.com/data/icons/party-new-years/128/Party_Newyears_Watch-256.png"
   },
   {
     "id": 3,
-    "title": "iphone",
+    "title": "Parlantes",
     "price": 450,
-    "thumbnail": "http://thumbnail.com/iphone"
+    "thumbnail": "https://cdn2.iconfinder.com/data/icons/party-new-years/128/Party_Newyears_Speaker-256.png"
   }
 ]

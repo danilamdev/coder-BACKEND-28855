@@ -1,4 +1,5 @@
 const fs = require('fs')
+const path = require('path')
 
 class Controller {
    constructor(fileName) {
@@ -58,5 +59,5 @@ class Controller {
 }
 
 
-module.exports = new Controller('products.json')
+module.exports = new Controller(path.resolve(__dirname, '../products.json'))
 
