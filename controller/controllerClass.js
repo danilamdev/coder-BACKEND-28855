@@ -39,7 +39,7 @@ class Controller {
          return products
 
       } catch (error) {
-         return Promise.reject('Error: No se encontro el archivo')
+         return []
       }
    }
 

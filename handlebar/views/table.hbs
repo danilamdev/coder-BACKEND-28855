@@ -1,6 +1,7 @@
 <div class="container">
    {{>header}}
 
+   {{#if products.length}}
    <table class="content-table">
       <thead>
          <tr class="head-tr">
@@ -19,4 +20,10 @@
          {{/each}}
       </tbody>
    </table>
+
+   {{else}}
+   <p class="empty">No hay ningun producto guardado...</p>
+
+
+   {{/if}}
 </div>

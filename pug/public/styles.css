@@ -69,28 +69,28 @@ label {
    margin-bottom: 40px;
 }
 
-
-
 .btn {
-   font-family: fredoka;
-   display: block;
-   padding: 15px 35px;
-   border-radius: 2em;
-   border: none;
-   background-image: linear-gradient(to right, #4ca1d3 0%, #8584fb 100%);
-   background-size: 200% auto;
-   color: rgb(252, 252, 252);
-   font-weight: bold;
-   font-size: 20px;
-   margin: 4em auto;
-   cursor: pointer;
-   transition: .5s;
-   box-shadow: 0 5px 10px rgba(93, 150, 216, 0.432);
+      background-image: linear-gradient(to right, #4ca1d3 0%, #8584fb 100%);
+      border-radius: 2em;
+      border: none;
+      color: white;
+      display: block;
+      font-family: fredoka;
+      font-size: 20px;
+      font-weight: bold;
+      margin: 4em auto;
+      padding: 15px 35px;
+      background-size: 200% auto;
+      cursor: pointer;
+      box-shadow: 0 5px 10px rgba(93, 150, 216, 0.432);
+      transition: background .5s;
+
 
 }
 
 .btn:hover {
    background-position: right center;
+
 }
 
 .links-container {
@@ -154,3 +154,4 @@ tbody td:last-of-type{
    width: max-content;
    box-shadow: 0 5px 10px rgba(255, 44, 44, 0.192);
 }
+

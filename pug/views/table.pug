@@ -1,0 +1,33 @@
+html(lang='en')
+   head
+      title='pug | coderhouse'
+      link( rel='stylesheet' href='styles.css')
+   body
+   .container
+      h1 <span>PUG</span>Coder
+
+      .links-container 
+         a(href='/') Agregar productos   
+         a(href='/productos') Lista de productos
+
+      if products.length === 0
+         p.empty No hay ningun producto guardado ...
+      else 
+         table.content-table 
+            thead 
+               tr.head-tr  
+                  th Producto 
+                  th Precio 
+                  th Url de imagen 
+               tbody.table-body
+                  each product in products
+                     tr 
+                        td= product.title 
+                        td= '$' + product.price 
+                        td
+                           img(src=product.thumbnail, alt=product.title width=64 heigth=64)
+
+
+
+      
+         

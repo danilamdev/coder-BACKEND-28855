@@ -1,17 +1,16 @@
 const express = require('express')
 const controller = require('../controller/controllerClass')
-const { engine } = require('express-handlebars')
 const app = express()
 
-app.engine('.hbs', engine({ extname: '.hbs' }))
-app.set('view engine', '.hbs')
+app.set('view engine', 'pug')
 app.set('views', './views')
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static('public'))
 
-app.get('/', (req, res) => {
-   res.render('home')
+app.get('/', async (req, res) => {
+   const products = await controller.getAll()
+   res.render('index', { products })
 })
 
 app.get('/productos', async (req, res) => {
@@ -29,5 +28,5 @@ app.post('/productos', async (req, res) => {
 })
 
 app.listen('8080', () => {
-   console.log('servidor iniciado en PUERTO 8080-- ejercicio handlebar')
+   console.log('servidor iniciado en PUERTO 8080-- ejercicio pug')
 })
