@@ -1,0 +1,36 @@
+<%- include('../partials/head') %>
+   <div class="container">
+      <%- include('../partials/header') %>
+
+
+         <% if (products.length===0) { %>
+            <p class="empty">No hay productos guardados...</p>
+
+            <% } else { %>
+               <table class="content-table">
+                  <thead>
+                     <tr>
+                        <th>Producto</th>
+                        <th>Precio</th>
+                        <th>URL de imagen</th>
+                     </tr>
+                  </thead>
+                  <tbody class="table-body">
+                     <% products.forEach(product=> { %>
+                        <tr>
+                           <td>
+                              <%= product.title %>
+                           </td>
+                           <td>
+                              <%= '$' + product.price %>
+                           </td>
+                           <td><img src=<%=product.thumbnail %> alt=<%= product.title %> width='54' heigth='54' title=
+                                 <%= product.title %> > </td>
+                        </tr>
+
+                        <% }) %>
+                  </tbody>
+               </table>
+               <% } %>
+
+   </div>
