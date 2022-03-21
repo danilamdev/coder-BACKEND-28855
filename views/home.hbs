@@ -1,0 +1,142 @@
+<div class="container">
+   {{>header}}
+
+   <h2>formulario</h2>
+
+   <div class="form-container">
+      <form class="formtag">
+         <label for="producto">
+            <input type="text" name="title" id="producto" placeholder="producto...">
+         </label>
+
+         <label for="precio">
+            <input type="text" name="price" id="precio" placeholder="precio...">
+         </label>
+
+         <label for="url">
+            <input type="text" name="thumbnail" id="url" placeholder="http://...">
+         </label>
+
+         <button class="btn">Enviar</button>
+      </form>
+   </div>
+   <h1><span>Tabla</span>Dinamica</h1>
+
+   <table class="content-table-D">
+      <thead>
+         <tr class="head-tr-D">
+            <th>Producto</th>
+            <th>Precio</th>
+            <th>URL de imagen</th>
+         </tr>
+      </thead>
+      <tbody class="table-body-D">
+
+      </tbody>
+
+   </table>
+
+   {{>chat}}
+
+
+</div>
+
+<script>
+   const socket = io()
+
+   const mail = document.getElementById('mail')
+   const mensaje = document.getElementById('mensaje')
+   const button = document.querySelector('#btn')
+   const chat = document.querySelector('.chat-container')
+   const tbody = document.querySelector('.table-body-D')
+   const form = document.querySelector('.formtag')
+
+   const producto = document.getElementById('producto')
+   const precio = document.getElementById('precio')
+   const url = document.getElementById('url')
+   const btn = document.querySelector('.btn')
+
+
+   form.addEventListener('submit', (e) => {
+      e.preventDefault()
+
+      let title = producto.value
+      let price = precio.value
+      let thumbnail = url.value
+
+      fetch('http://localhost:8080/productos', {
+         method: 'POST',
+         headers: {
+            'Content-Type': 'application/json'
+         },
+         body: JSON.stringify({ title, price, thumbnail })
+      })
+         .then(res => res.json())
+         .then(res => console.log('respuesta', res))
+
+      socket.emit('form', { title, price, thumbnail })
+
+      producto.value = ''
+      precio.value = ''
+      url.value = ''
+   })
+
+   button.addEventListener('click', () => {
+      let inputMail = mail.value
+      let inputMsg = mensaje.value
+
+      socket.emit('chat', { inputMail, inputMsg })
+
+      mail.value = ''
+      mensaje.value = ''
+
+   })
+
+   socket.on('dataBACK', data => {
+
+      const opciones = {
+         year: "2-digit",
+         day: "2-digit",
+         month: "2-digit",
+         hour: "2-digit",
+         minute: "2-digit",
+         second: "numeric"
+      }
+
+      const dateIntl = new Intl.DateTimeFormat('es', opciones).format(new Date())
+
+      let html = `<p><strong>${data.inputMail} </strong><time>[${dateIntl}]</time><span>${data.inputMsg}</span></p>`
+
+      chat.insertAdjacentHTML('beforeend', html)
+   })
+
+   socket.on('initial', data => {
+      let html = ''
+      data.forEach(data => {
+         html += `
+          <tr>
+             <td>${data.title}</td>
+             <td>${data.price}</td>
+             <td><img src=${data.thumbnail} alt=${data.title} width="58" height="58" title=${data.title} />
+          </td>
+       </tr>
+       `
+      })
+
+      tbody.insertAdjacentHTML('beforeend', html)
+   })
+
+   socket.on('formBACK', data => {
+      console.log('formBACK', data)
+      let html = `
+          <tr>
+             <td>${data.title}</td>
+             <td>${data.price}</td>
+             <td><img src=${data.thumbnail} alt=${data.title} width="58" height="58" title=${data.title} />
+          </td>
+       </tr>
+       `
+
+      tbody.insertAdjacentHTML('beforeend', html)
+   })
+</script>

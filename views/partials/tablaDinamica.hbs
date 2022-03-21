@@ -1,0 +1,26 @@
+{{#if products.length}}
+<table class="content-table-D">
+   <thead>
+      <tr class="head-tr-D">
+         <th>Producto</th>
+         <th>Precio</th>
+         <th>URL de imagen</th>
+      </tr>
+   </thead>
+   <tbody class="table-body-D">
+      {{#each products}}
+      <tr>
+         <td>{{title}}</td>
+         <td>${{price}}</td>
+         <td><img src={{thumbnail}} alt={{title}} width="58" height="58" title={{title}}></td>
+      </tr>
+      {{/each}}
+   </tbody>
+
+</table>
+
+{{else}}
+<p class="empty">No hay ningun producto guardado...</p>
+
+
+{{/if}}
